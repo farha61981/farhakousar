@@ -15,6 +15,7 @@
             --dot-color: rgba(110, 72, 170, 0.3);
             --card-bg: #1e1e1e;
             --shadow: 0 5px 15px rgba(0,0,0,0.3);
+            --progress-bg: #2d2d2d;
         }
 
         [data-theme="light"] {
@@ -26,6 +27,7 @@
             --dot-color: rgba(110, 72, 170, 0.2);
             --card-bg: #ffffff;
             --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --progress-bg: #e9ecef;
         }
 
         * {
@@ -239,6 +241,17 @@
             position: relative;
         }
 
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            color: var(--text-color);
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         /* About Section */
         .about-content {
             max-width: 800px;
@@ -248,17 +261,15 @@
 
         /* Skills Section */
         .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .skill-category {
             background-color: var(--card-bg);
             border-radius: 10px;
-            padding: 20px;
-            width: 300px;
+            padding: 25px;
             box-shadow: var(--shadow);
             transition: transform 0.3s;
         }
@@ -267,27 +278,62 @@
             transform: translateY(-5px);
         }
 
-        .skill-category h3 {
-            color: var(--primary-color);
-            margin-top: 0;
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 10px;
         }
 
-        .skill-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .skill-list li {
-            padding: 8px 0;
+        .category-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
+            justify-content: center;
+            background: rgba(110, 72, 170, 0.1);
+            border-radius: 50%;
         }
 
-        .skill-list li i {
-            margin-right: 10px;
-            color: var(--accent-color);
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .progress-container {
+            height: 10px;
+            background-color: var(--progress-bg);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+            width: 0;
+        }
+
+        @keyframes animateProgress {
+            from { width: 0; }
+            to { width: var(--progress-width); }
         }
 
         /* Projects Section */
@@ -701,10 +747,28 @@
             transform: translateY(-5px);
         }
 
+        .stat-card .metric-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
         .stat-card h3 {
             font-size: 2.5rem;
-            margin: 0;
+            margin: 10px 0;
             color: var(--primary-color);
+        }
+
+        .stat-card .metric-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .metric-description {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            opacity: 0.8;
         }
 
         .impact-container {
@@ -942,7 +1006,8 @@
             .opensource-container,
             .volunteering-container,
             .events-container,
-            .articles-container {
+            .articles-container,
+            .skills-container {
                 grid-template-columns: 1fr;
             }
         }
@@ -965,6 +1030,7 @@
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#growth">Growth</a></li>
+                    <li><a href="#contact">Contact</a></li>
                     <li>
                         <button class="theme-toggle" id="themeToggle">
                             <i class="fas fa-moon"></i>
@@ -999,45 +1065,280 @@
         <section id="skills">
             <h2 class="section-title">Skills & Expertise</h2>
             <div class="skills-container">
+                <!-- Programming Languages -->
                 <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <ul class="skill-list">
-                        <li><i class="fas fa-code"></i> Python</li>
-                        <li><i class="fas fa-code"></i> SQL</li>
-                        <li><i class="fas fa-code"></i> Java</li>
-                        <li><i class="fas fa-code"></i> C++</li>
-                        <li><i class="fas fa-code"></i> C</li>
-                        <li><i class="fas fa-code"></i> HTML/CSS/JS</li>
-                    </ul>
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Programming Languages</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 95%; animation: animateProgress 1s ease-in-out forwards 0.1s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>SQL</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 90%; animation: animateProgress 1s ease-in-out forwards 0.2s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Java</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 80%; animation: animateProgress 1s ease-in-out forwards 0.3s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>C++</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 75%; animation: animateProgress 1s ease-in-out forwards 0.4s"></div>
+                        </div>
+                    </div>
                 </div>
                 
+                <!-- Data Analysis & Visualization -->
                 <div class="skill-category">
-                    <h3>Data Visualization</h3>
-                    <ul class="skill-list">
-                        <li><i class="fas fa-chart-bar"></i> Power BI</li>
-                        <li><i class="fas fa-chart-pie"></i> Tableau</li>
-                        <li><i class="fas fa-chart-line"></i> Looker Studio</li>
-                        <li><i class="fas fa-file-excel"></i> Excel</li>
-                    </ul>
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Data Analysis & Visualization</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Power BI</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 92%; animation: animateProgress 1s ease-in-out forwards 0.1s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Tableau</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 88%; animation: animateProgress 1s ease-in-out forwards 0.2s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Looker Studio</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 85%; animation: animateProgress 1s ease-in-out forwards 0.3s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Excel</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 90%; animation: animateProgress 1s ease-in-out forwards 0.4s"></div>
+                        </div>
+                    </div>
                 </div>
                 
+                <!-- AI/ML & Data Science -->
                 <div class="skill-category">
-                    <h3>Tools & Platforms</h3>
-                    <ul class="skill-list">
-                        <li><i class="fab fa-google"></i> Google Cloud</li>
-                        <li><i class="fab fa-git-alt"></i> Git/GitHub</li>
-                        <li><i class="fas fa-database"></i> Kaggle</li>
-                        <li><i class="fas fa-book"></i> Jupyter Notebook</li>
-                    </ul>
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI/ML & Data Science</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Machine Learning</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 88%; animation: animateProgress 1s ease-in-out forwards 0.1s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>NLP</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 80%; animation: animateProgress 1s ease-in-out forwards 0.2s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Generative AI</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 75%; animation: animateProgress 1s ease-in-out forwards 0.3s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Deep Learning</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 70%; animation: animateProgress 1s ease-in-out forwards 0.4s"></div>
+                        </div>
+                    </div>
                 </div>
                 
+                <!-- Web Development -->
                 <div class="skill-category">
-                    <h3>AI/ML Specializations</h3>
-                    <ul class="skill-list">
-                        <li><i class="fas fa-brain"></i> NLP</li>
-                        <li><i class="fas fa-robot"></i> Machine Learning</li>
-                        <li><i class="fas fa-magic"></i> Generative AI</li>
-                    </ul>
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Web Development</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML/CSS</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 90%; animation: animateProgress 1s ease-in-out forwards 0.1s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 80%; animation: animateProgress 1s ease-in-out forwards 0.2s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>React</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 70%; animation: animateProgress 1s ease-in-out forwards 0.3s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Node.js</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 65%; animation: animateProgress 1s ease-in-out forwards 0.4s"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cloud & DevOps -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3>Cloud & DevOps</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Google Cloud</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 75%; animation: animateProgress 1s ease-in-out forwards 0.1s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Git/GitHub</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 85%; animation: animateProgress 1s ease-in-out forwards 0.2s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Docker</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 70%; animation: animateProgress 1s ease-in-out forwards 0.3s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>CI/CD</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 65%; animation: animateProgress 1s ease-in-out forwards 0.4s"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Tools -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Data Tools</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Jupyter Notebook</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 90%; animation: animateProgress 1s ease-in-out forwards 0.1s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Kaggle</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 85%; animation: animateProgress 1s ease-in-out forwards 0.2s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Pandas</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 92%; animation: animateProgress 1s ease-in-out forwards 0.3s"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>NumPy</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="--progress-width: 90%; animation: animateProgress 1s ease-in-out forwards 0.4s"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1360,27 +1661,43 @@
 
         <section id="growth">
             <h2 class="section-title">My Growth</h2>
-            <h3 style="text-align: center; margin-bottom: 30px;">The Numbers That Matter</h3>
+            <p class="section-subtitle">The Numbers That Matter – Quantifiable metrics showcasing the reach and impact of my professional journey</p>
+            
             <div class="growth-stats">
                 <div class="stat-card">
+                    <div class="metric-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
                     <h3>10.5K+</h3>
-                    <p>LinkedIn Connections</p>
-                    <p>Professional network growth</p>
+                    <div class="metric-name">LinkedIn Connections</div>
+                    <div class="metric-description">Professional network growth</div>
                 </div>
+                
                 <div class="stat-card">
+                    <div class="metric-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
                     <h3>172+</h3>
-                    <p>GitHub Followers</p>
-                    <p>Developer community engagement</p>
+                    <div class="metric-name">GitHub Followers</div>
+                    <div class="metric-description">Developer community engagement</div>
                 </div>
+                
                 <div class="stat-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
                     <h3>50+</h3>
-                    <p>Students Mentored</p>
-                    <p>Career guidance provided</p>
+                    <div class="metric-name">Students Mentored</div>
+                    <div class="metric-description">Career guidance provided</div>
                 </div>
+                
                 <div class="stat-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
                     <h3>25+</h3>
-                    <p>Projects Delivered</p>
-                    <p>Successful project completions</p>
+                    <div class="metric-name">Projects Delivered</div>
+                    <div class="metric-description">Successful project completions</div>
                 </div>
             </div>
             
