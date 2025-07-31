@@ -336,8 +336,39 @@
             to { width: var(--progress-width); }
         }
 
-        /* Projects Section */
+<title>Projects Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6e48aa;
+            --secondary-color: #9d50bb;
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --accent-color: #4776E6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
         .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
@@ -347,38 +378,41 @@
             background-color: var(--card-bg);
             border-radius: 10px;
             padding: 25px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
 
         .project-card h3 {
             color: var(--primary-color);
             margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
         }
 
-        .project-card .date {
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            margin: 5px 0 15px;
+        .project-card p {
+            margin-bottom: 15px;
+            color: var(--text-color);
         }
 
-        .project-card .skills {
+        .project-skills {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 15px;
+            margin: 15px 0;
         }
 
-        .project-card .skill-tag {
-            background-color: rgba(110, 72, 170, 0.2);
+        .skill-tag {
+            background-color: rgba(110, 72, 170, 0.1);
             color: var(--primary-color);
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
 
         .project-links {
@@ -394,11 +428,23 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            transition: color 0.3s;
         }
 
         .project-links a:hover {
-            text-decoration: underline;
+            color: var(--primary-color);
         }
+
+        @media (max-width: 768px) {
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
 
         /* Timeline */
         .timeline {
@@ -1415,124 +1461,106 @@
             </div>
         </section>
 
-                <!-- Project Showcase Section -->
-        <section id="project-showcase">
-            <h2 class="section-title">Project Showcase</h2>
-            <div class="project-showcase">
-                <div class="showcase-card">
-                    <h3>Land Using Classification NDVI Analysis</h3>
-                    <p>Tool for analyzing land use classification using geospatial data and NDVI analysis.</p>
-                    <div class="showcase-skills">
-                        <span class="showcase-skill">geopandas</span>
-                        <span class="showcase-skill">NDVI</span>
-                        <span class="showcase-skill">matplotlib</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-                    </div>
+<section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-container">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <h3>Land Using Classification NDVI Analysis</h3>
+                <p>Tool for analyzing land use classification using geospatial data and NDVI analysis to monitor vegetation health and land changes.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">geopandas</span>
+                    <span class="skill-tag">NDVI</span>
+                    <span class="skill-tag">matplotlib</span>
+                    <span class="skill-tag">geospatial</span>
                 </div>
-                
-                <div class="showcase-card">
-                    <h3>Chatbot AI Agent</h3>
-                    <p>AI-powered chatbot for customer support and information retrieval.</p>
-                    <div class="showcase-skills">
-                        <span class="showcase-skill">Python</span>
-                        <span class="showcase-skill">Streamlit</span>
-                        <span class="showcase-skill">NLP</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-                    </div>
-                </div>
-                
-                <div class="showcase-card">
-                    <h3>Walmart Sales Data Analysis</h3>
-                    <p>Comprehensive analysis of Walmart sales data to identify trends and patterns.</p>
-                    <div class="showcase-skills">
-                        <span class="showcase-skill">Excel</span>
-                        <span class="showcase-skill">Power BI</span>
-                        <span class="showcase-skill">Data Analysis</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-                    </div>
-                </div>
-                
-                <div class="showcase-card">
-                    <h3>Swiggy Instamart Analysis</h3>
-                    <p>Exploratory data analysis of Swiggy Instamart data to understand customer behavior.</p>
-                    <div class="showcase-skills">
-                        <span class="showcase-skill">Python</span>
-                        <span class="showcase-skill">EDA</span>
-                        <span class="showcase-skill">Pandas</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-                    </div>
-                </div>
-                
-                <div class="showcase-card">
-                    <h3>Road Safety Analysis Dashboard</h3>
-                    <p>Interactive dashboard analyzing road safety data and accident patterns.</p>
-                    <div class="showcase-skills">
-                        <span class="showcase-skill">Power BI</span>
-                        <span class="showcase-skill">DAX</span>
-                        <span class="showcase-skill">EDA</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-                    </div>
-                </div>
-                
-                <div class="showcase-card">
-                    <h3>HR Analytics: Attrition Forecasting</h3>
-                    <p>Developed an attrition prediction model using logistic regression on 4,000+ records, achieving 91% accuracy.</p>
-                    <div class="showcase-skills">
-                        <span class="showcase-skill">Power BI</span>
-                        <span class="showcase-skill">Excel</span>
-                        <span class="showcase-skill">Python</span>
-                        <span class="showcase-skill">Tableau</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-                    </div>
-                </div>
-                
-                <div class="showcase-card">
-                    <h3>Smart Discount Analyzer</h3>
-                    <p>Processed 50,000+ reviews to identify discount-eligible feedback, improving targeted promotions by 52.2%.</p>
-                    <div class="showcase-skills">
-                        <span class="showcase-skill">Python</span>
-                        <span class="showcase-skill">SQL</span>
-                        <span class="showcase-skill">Looker</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/FarhaKousar1601/Smart-Discount-Analyzer" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-                
-                <div class="showcase-card">
-                    <h3>Smart Automate Checkout System</h3>
-                    <p>Automates the checkout process using RFID tags and readers, reducing wait time and improving customer experience.</p>
-                    <div class="showcase-skills">
-                        <span class="showcase-skill">Python</span>
-                        <span class="showcase-skill">C++</span>
-                        <span class="showcase-skill">Arduino</span>
-                        <span class="showcase-skill">Raspberry Pi</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
+                <div class="project-links">
+                    <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                 </div>
             </div>
-        </section>
 
+            <!-- Project 2 -->
+            <div class="project-card">
+                <h3>Chatbot AI Agent</h3>
+                <p>AI-powered chatbot for customer support using natural language processing to understand and respond to user queries effectively.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Streamlit</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Transformers</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <h3>Walmart Sales Data Analysis</h3>
+                <p>Comprehensive analysis of Walmart sales data to identify trends, seasonal patterns, and optimize inventory management.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">Excel</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">DAX</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Dashboard</a>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <h3>Swiggy Instamart Analysis</h3>
+                <p>Exploratory data analysis of Swiggy Instamart data to understand customer behavior and optimize product recommendations.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">EDA</span>
+                    <span class="skill-tag">Seaborn</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Report</a>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card">
+                <h3>Road Safety Analysis Dashboard</h3>
+                <p>Interactive dashboard analyzing road safety data and accident patterns to help policymakers improve transportation safety.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">DAX</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">SQL</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Dashboard</a>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card">
+                <h3>HR Analytics: Attrition Forecasting</h3>
+                <p>Developed an attrition prediction model using logistic regression on 4,000+ records, achieving 91% accuracy.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Dashboard</a>
+                </div>
+            </div>
+        </div>
+</section>
      <div class="certificates-slider">
     <div class="certificate">
         <img src="https://raw.githubusercontent.com/farha61981/farhakousar/main/ud.jpg" alt="Udemy Certificate">
